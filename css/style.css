@@ -1,0 +1,203 @@
+@charset "UTF-8";
+/*Variabler*/
+/*vores partial fil hentes ind som et modul. Det gør det muligt for os at hente og genbruge variabler, mixins og funktioner i andre filer*/
+body {
+  background-color: #fff;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  /*Nesting - vi indsætter elementer som har direkte relation til øverste element af blokken (i dette tilfælde body)*/
+}
+body p {
+  color: #000000;
+  font-size: 16px;
+  line-height: 1.5;
+}
+body h1 {
+  color: #000000;
+  font-weight: 600;
+}
+
+/*Navigation*/
+header {
+  background-color: #fff;
+  border-bottom: 4px solid #2A2D66; /*Definerer den streg mellem nav og banner img */
+  grid-column: 1/6;
+}
+
+nav {
+  height: 4em;
+  /*Justify og Align er lokale variabler koblet til vores flex mixin. De er parametre/variabler som kan ændres når vores mixin kaldes*/
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+nav img {
+  width: 100px;
+}
+nav #bars {
+  display: none;
+}
+nav ul {
+  /*Justify og Align er lokale variabler koblet til vores flex mixin. De er parametre/variabler som kan ændres når vores mixin kaldes*/
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+nav a {
+  color: #000000;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0.5em;
+  padding: 0.5em;
+  text-decoration: none;
+}
+nav a:hover {
+  color: #FF8630;
+}
+
+/*Bannersektion*/
+.banner-img img {
+  display: block;
+  width: 100%;
+}
+
+main {
+  background-color: #F0F0F0;
+  display: grid;
+  grid-column: 1/8;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+/* Section layout */
+.stage {
+  align-items: stretch;
+  display: grid;
+  grid-column: 1/-1;
+  grid-template-columns: 1fr 1fr;
+  margin: 3em 2em;
+}
+.stage .billede {
+  background-image: url(../img/forsidebilledecomputer.png);
+  background-position: center;
+  background-size: cover;
+  min-height: 500px;
+}
+.stage .tekst-box {
+  background: #fff;
+  padding: 3em;
+  border: 2px solid #2A2D66;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+.stage h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1em;
+}
+.stage p {
+  line-height: 1.6;
+  margin-bottom: 1.2em;
+}
+.stage button {
+  display: block;
+  background-color: #FF8630;
+  border-radius: 8px;
+  color: white;
+  padding: 0.7em 3.5em;
+  text-decoration: none;
+  text-align: center;
+}
+.stage button:hover {
+  background-color: #2A2D66;
+  color: #fff;
+  transition: 0.3s ease-in-out;
+}
+.stage button {
+  margin-top: 2em;
+}
+
+/*Footer styling*/
+footer {
+  background-color: #2A2D66;
+  display: grid;
+  grid-column: 1/6;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 5em;
+  padding: 2em 4em;
+}
+footer p, footer h2 {
+  color: #fff;
+  font-style: normal;
+  line-height: 0.5;
+}
+footer h2 {
+  font-size: 18px;
+}
+footer a {
+  color: #fff;
+}
+footer a:hover {
+  color: #FF8630;
+}
+footer .logo-footer {
+  height: auto;
+  width: 120px;
+}
+
+.footer-left {
+  grid-column: 1/2;
+}
+
+.footer-right {
+  grid-column: 2/3;
+  margin: auto 0; /* Margin bruges til at centrere billedet/kassen mellem top og bund. Det kan vi fordi at vi kalder på div'en (blok-element) og ikke billedet (inline element). */
+  text-align: right;
+}
+
+@media screen and (max-width: 900px) {
+  header {
+    display: inline;
+  }
+  nav #bars {
+    border: none; /*fjerner border fra button tags*/
+    color: #FF8630;
+    cursor: pointer;
+    display: flex;
+    font-size: 2.3em;
+  }
+  nav ul {
+    border-top: 4px solid #2A2D66;
+    display: none; /*Fjerne nav links*/
+    flex-direction: column;
+    height: auto;
+  }
+  nav ul li {
+    display: flex;
+  }
+  .stage {
+    grid-template-columns: 1fr;
+  }
+  .stage .tekst-box {
+    margin-bottom: 1.5em;
+    order: 1;
+    padding: 1em 1em;
+  }
+  .stage .tekst-box h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.3em;
+  }
+  .stage .tekst-box p {
+    line-height: 1.5em;
+    margin-bottom: 1.2em;
+  }
+  .stage .billede {
+    margin-top: 2em;
+    order: 2;
+  }
+}/*# sourceMappingURL=style.css.map */

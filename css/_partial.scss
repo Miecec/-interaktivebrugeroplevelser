@@ -1,0 +1,74 @@
+/*Variabler*/
+$bg-color: #fff;
+$font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$footer-color: #2A2D66;
+$nav-color: #fff;
+$primary-color: #FF8630; 
+$secondary-color: #2A2D66; 
+$section-color: #F0F0F0;
+$text-color: #000000; 
+
+
+@mixin flex($justify: center, $align: center){
+    /*Justify og Align er lokale variabler koblet til vores flex mixin. De er parametre/variabler som kan ændres når vores mixin kaldes*/
+    align-items: $align;
+    display: flex;
+    justify-content: $justify;
+    
+
+}
+
+
+@mixin btn($bg-color: $primary-color, $btn-padding: 0.7em 3.5em, $hover-bg: $secondary-color, $hover-color: #fff){
+    background-color: $primary-color;
+    border-radius: 8px;
+    color: white;
+    padding: $btn-padding;
+    text-decoration: none;
+    text-align: center;
+    
+
+     &:hover{
+                    background-color: $hover-bg;
+                    color: $hover-color;
+                    transition: 0.3s ease-in-out;
+                    
+                }
+
+}
+
+
+
+
+
+//IKKE brugt, men lavet til de bokse der skulle i mine stages. 
+@mixin spg($width: 65vw, $height: 30vh){
+    background-color: #fff;
+    height: $height; 
+    margin: 2em auto;
+    padding: 1em 1.5em;
+    width: $width;
+
+}
+
+
+@mixin cta-box($width: 20vw, $height: 30vh){
+    background-color: #fff;
+    height: $height;
+    margin: 2em;
+    padding: 1em 1.5em;
+    width: $width; 
+
+}
+
+@mixin feedback-box($width: 25vw, $height: 65vh){
+    background-color: #fff;
+    width: $width;
+    height: $height; 
+    padding: 0.5em 1.5em;
+    margin: 2em;
+
+
+}
+
+

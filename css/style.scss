@@ -1,0 +1,242 @@
+@use 'partial'; /*vores partial fil hentes ind som et modul. Det gør det muligt for os at hente og genbruge variabler, mixins og funktioner i andre filer*/
+
+body{
+    background-color: partial.$bg-color;
+    box-sizing: border-box;
+    font-family: partial.$font;
+    margin: 0;
+    padding: 0;
+    
+    
+
+        /*Nesting - vi indsætter elementer som har direkte relation til øverste element af blokken (i dette tilfælde body)*/
+
+        p{
+            color: partial.$text-color;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        h1{
+            color: partial.$text-color;
+            font-weight: 600;
+            
+        }
+}
+
+
+/*Navigation*/
+
+  header{
+    background-color: partial.$nav-color;
+    border-bottom: 4px solid partial.$secondary-color; /*Definerer den streg mellem nav og banner img */
+    grid-column: 1/6;
+  }
+
+  nav{
+    height: 4em;
+    @include partial.flex($justify: space-between);
+    padding: 1em;
+    
+
+        img{
+            width: 100px;
+        }
+
+        #bars{
+            display: none;
+        }
+
+        ul{
+            @include partial.flex;
+            list-style-type: none;    
+        }
+
+        a{
+            color: partial.$text-color;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0.5em;
+            padding: 0.5em;
+            text-decoration: none;
+
+                 &:hover{
+                    color: partial.$primary-color;
+                }
+
+        }
+
+  }
+
+  /*Bannersektion*/
+
+.banner-img img {
+    display: block;
+    width: 100%;
+    
+}
+
+main {
+    background-color: partial.$section-color;
+    display: grid;
+    grid-column: 1 / 8;
+    grid-template-columns: repeat(8, 1fr);
+    
+}
+
+/* Section layout */
+.stage {
+    align-items: stretch; //Elementerne (.billede og .tekst-box) bliver strakt til at fylde hele højden af containeren
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr 1fr; // venstre / højre
+    margin: 3em 2em;
+
+   
+            .billede {
+                background-image: url(../img/forsidebilledecomputer.png);
+                background-position: center;
+                background-size: cover;
+                min-height: 500px;
+            }
+
+            .tekst-box {
+                background: partial.$bg-color;
+                padding: 3em;
+
+                border: 2px solid partial.$secondary-color;
+                border-radius: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                overflow: hidden;
+            }
+
+                        h1 {
+                            font-size: 2.5rem;
+                            margin-bottom: 1em;
+                        }
+
+                        p {
+                            line-height: 1.6;
+                            margin-bottom: 1.2em;
+                            
+                        }
+
+                        button {
+                            display: block;
+                            @include partial.btn;
+                            margin-top: 2em;
+                            
+                        }
+
+        }   
+
+
+
+/*Footer styling*/
+
+footer{
+    background-color: partial.$footer-color;
+    display: grid;
+    grid-column: 1/6;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 5em;
+    padding: 2em 4em;
+
+        p, h2{
+            color: partial.$nav-color;
+            font-style: normal;
+            line-height: 0.5;
+            
+        }
+
+        h2{
+            font-size: 18px;
+        }
+
+        a{
+            color: partial.$nav-color;
+
+                &:hover{
+                    color: partial.$primary-color;
+                }
+        }
+
+        .logo-footer{
+            height: auto;
+            width: 120px;
+            
+        }
+}
+
+.footer-left{
+    grid-column: 1/2;
+}
+
+.footer-right{
+    grid-column: 2/3;
+    margin: auto 0; /* Margin bruges til at centrere billedet/kassen mellem top og bund. Det kan vi fordi at vi kalder på div'en (blok-element) og ikke billedet (inline element). */
+    text-align: right;
+}
+
+
+
+@media screen and (max-width: 900px){
+header{
+        display: inline;
+ }
+
+nav{
+
+        #bars{
+            border: none; /*fjerner border fra button tags*/
+            color: partial.$primary-color;
+            cursor: pointer;
+            display: flex;
+            font-size: 2.3em;
+           
+        }
+
+        ul{
+            border-top: 4px solid partial.$secondary-color;
+            display: none; /*Fjerne nav links*/
+            flex-direction: column;
+            height: auto;
+
+                li{
+                    display: flex;
+                }
+
+        }
+}
+
+.stage {
+        grid-template-columns: 1fr;
+
+
+         .tekst-box {
+            margin-bottom: 1.5em;
+            order: 1;
+            padding: 1em 1em;
+
+                h1 {
+                    font-size: 1.8rem;
+                    margin-bottom: 0.3em;
+                }
+
+                p {
+                    line-height: 1.5em;
+                    margin-bottom: 1.2em;
+                    
+                }
+        }
+       
+     }
+
+.stage .billede {
+        margin-top: 2em;
+        order: 2;
+}
+    
+}
